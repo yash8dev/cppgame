@@ -5,10 +5,12 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall")
 project(cppgame)
 
 link_directories("dependencies/SDL2/lib")
-link_directories("dependencies/SDL2/bin")
+
+include_directories("dependencies/SDL2/include")
+include_directories("include")
 
 file(GLOB SOURCES "src/*.cpp")
-include_directories("dependencies/SDL2/include")
+
 
 add_executable(main ${SOURCES})
 
