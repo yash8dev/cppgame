@@ -13,8 +13,28 @@ RenderWindow::RenderWindow(const char* p_title , int p_w , int p_h)
     renderer = SDL_CreateRenderer(window , -1 , SDL_RENDERER_ACCELERATED);
 }
 
+SDL_Texture* RenderWindow::loadTexture(const char* p_filepath){
+    SDL_Texture* texture = NULL;
+    texture = IMG_LoadTexture(renderer,p_filepath);
+    if(texture == NULL)
+        std::cout << "TEXTURE LOADING FAILED" << SDL_GetError() << std::endl ; 
+    return texture;
+}
+
+void RenderWindow::clear(){
+    SDL_RenderClear(renderer);
+}
+
 void RenderWindow::ClearUp(){
     SDL_DestroyWindow(window);
+}
+
+void RenderWindow::render(SDL_Texture* p_tex){
+    SDL_RenderCopy( renderer ,p_tex,NULL,NULL);
+}
+
+void RenderWindow::display(){
+    SDL_RenderPresent(renderer);
 }
     
     

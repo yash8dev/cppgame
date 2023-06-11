@@ -12,6 +12,7 @@ if(!(IMG_Init(IMG_INIT_PNG))){
 }
 
 RenderWindow window("game v1",1280,720);
+SDL_Texture* grassTexture = window.loadTexture("res\\gfx\\ground_grass_1.png");
 
 bool gameRunning = true;
 SDL_Event event;
@@ -21,6 +22,9 @@ while (gameRunning)
         if (event.type ==  SDL_QUIT)
         gameRunning = false;
     }
+    window.clear();
+    window.render(grassTexture);
+    window.display();  
 
 }
 
